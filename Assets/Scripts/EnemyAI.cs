@@ -1,18 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEditor.PlayerSettings;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] Transform target;
-    [SerializeField] float speed = 0.5f;
+    [SerializeField] private Transform target;
+    [SerializeField] private float speed = 0.5f;
+    [SerializeField] float chaseRange = 20f;
+    [SerializeField] bool debugMode = true;
 
-    NavMeshAgent navMeshAgent;
+    private NavMeshAgent navMeshAgent;
+    private float distanceToTarget;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        distanceToTarget = Mathf.Infinity;
     }
 
     private void Update()
@@ -22,6 +25,20 @@ public class EnemyAI : MonoBehaviour
 
     private void SetDestination()
     {
-        navMeshAgent.SetDestination(target.position);
+        distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+        if (chaseRange < distanceToTarget)
+        {
+            Debug.DrawLine(transform.position, target.position, Color.yellow);
+        }
+        else
+        {
+            navMeshAgent.SetDestination(target.position);
+
+            if (debugMode)
+            {
+                Debug.DrawLine(transform.position, target.position, Color.red);
+            }
+        }
     }
 }
