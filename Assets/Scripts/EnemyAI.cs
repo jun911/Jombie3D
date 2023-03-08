@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,14 +11,15 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private bool debugMode = true;
 
     private NavMeshAgent navMeshAgent;
-    private float distanceToTarget = Mathf.Infinity;
     private Vector3 startPosition;
-    private STATE_ENEMY_MOVE stateEnemyMove;
+    private STATE_ENEMY stateEnemy;
+    private float distanceToTarget;
 
-    private enum STATE_ENEMY_MOVE
+    private enum STATE_ENEMY
     {
-        FOLLOW,
-        RETURN
+        PEACE,
+        ENGAGE
+        //PROVOKE
     }
 
     private void Awake()
@@ -28,49 +30,81 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        SetDestination();
-        MoveEnemy();
+        EnemyProcessing();
+    }
+
+    private void EnemyProcessing()
+    {
+        distanceToTarget = Vector3.Distance(transform.position, target.position);
+
+        // distance check
+        stateEnemy = (distanceToTarget <= chaseRange) ? STATE_ENEMY.ENGAGE : STATE_ENEMY.PEACE;
+
+        switch (stateEnemy)
+        {
+            case STATE_ENEMY.PEACE:
+                MoveToStart();
+                break;
+
+            case STATE_ENEMY.ENGAGE:
+                EngageTarget();
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void MoveToStart()
+    {
+        navMeshAgent.speed = returnSpeed;
+        navMeshAgent.SetDestination(startPosition);
+    }
+
+    private void EngageTarget()
+    {
+        if(distanceToTarget >= navMeshAgent.stoppingDistance)
+        {
+            ChaseTarget();
+        }
+        
+        if(distanceToTarget <= navMeshAgent.stoppingDistance)
+        {
+            AttackTarget();
+        }
+    }
+
+    private void ChaseTarget()
+    {
+        navMeshAgent.speed = speed;
+        navMeshAgent.SetDestination(target.position);
+    }
+
+    void AttackTarget()
+    {
+        Debug.Log($"{name} has seeked and is destroying {target.name}");
     }
 
     private void OnDrawGizmosSelected()
     {
-        Color color;
-
-        switch (stateEnemyMove)
+        if (debugMode)
         {
-            case STATE_ENEMY_MOVE.FOLLOW:
-                color = Color.red;
-                break;
+            Color color;
 
-            default:
-                color = Color.yellow;
-                break;
-        }
+            switch (stateEnemy)
+            {
+                case STATE_ENEMY.ENGAGE:
+                    color = Color.red;
+                    break;
 
-        Gizmos.color = color;
-        Gizmos.DrawWireSphere(transform.position, chaseRange);
-        Debug.DrawLine(transform.position, target.position, color);
-    }
+                default:
+                    color = Color.yellow;
+                    break;
+            }
 
-    private void SetDestination()
-    {
-        distanceToTarget = Vector3.Distance(transform.position, target.position);
-        stateEnemyMove = (distanceToTarget <= chaseRange) ? STATE_ENEMY_MOVE.FOLLOW : STATE_ENEMY_MOVE.RETURN;
-    }
-
-    private void MoveEnemy()
-    {
-        switch (stateEnemyMove)
-        {
-            case STATE_ENEMY_MOVE.FOLLOW:
-                navMeshAgent.speed = speed;
-                navMeshAgent.SetDestination(target.position);
-                break;
-
-            case STATE_ENEMY_MOVE.RETURN:
-                navMeshAgent.speed = returnSpeed;
-                navMeshAgent.SetDestination(startPosition);
-                break;
+            Gizmos.color = color;
+            Gizmos.DrawWireSphere(transform.position, chaseRange);
+            Debug.DrawLine(transform.position, target.position, color);
         }
     }
 }
