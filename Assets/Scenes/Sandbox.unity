@@ -1830,9 +1830,25 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3645329296897017969, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
+      propertyPath: speed
+      value: 2.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645329296897017969, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 286676856}
+    - target: {fileID: 3645329296897017969, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
+      propertyPath: chaseRange
+      value: 10.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645329296897017969, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
+      propertyPath: returnSpeed
+      value: 0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645329296897017970, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
+      propertyPath: m_Speed
+      value: 5.85
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
 --- !u!4 &6785187183680558806 stripped
