@@ -342,6 +342,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2757780112826295796}
     m_Modifications:
+    - target: {fileID: 1220378026454751423, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.215
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220378026454751423, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.021
+      objectReference: {fileID: 0}
+    - target: {fileID: 1220378026454751423, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.039
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314378528980357691, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314378528980357691, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314528711745119689, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314840279074128601, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1314851624365542621, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315053898587676591, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315081671421726379, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315084296694104515, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315143101188292845, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2337074158996965286, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -402,6 +450,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carbine
       objectReference: {fileID: 0}
+    - target: {fileID: 8050769887730305620, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050769887730305620, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050769887730305620, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050769887730305620, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.31
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
 --- !u!1 &5252680842494986660 stripped
@@ -423,8 +487,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fpsCamera: {fileID: 4398173262728650811}
   range: 100
+  dmg: 30
+  muzzleFlash: {fileID: 8842305200307453977}
 --- !u!4 &5252680842495284612 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2337074158996965286, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
+  m_PrefabInstance: {fileID: 7533310470815224354}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8842305200307453977 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1314378528980357691, guid: ada2587319194f542957a8c2ae277cb9, type: 3}
   m_PrefabInstance: {fileID: 7533310470815224354}
   m_PrefabAsset: {fileID: 0}

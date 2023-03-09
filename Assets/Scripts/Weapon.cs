@@ -1,10 +1,12 @@
+using System;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private Camera fpsCamera;
     [SerializeField][Range(0, 200)] private float range = 100f;
-    [SerializeField] int dmg = 10;
+    [SerializeField] private int dmg = 10;
+    [SerializeField] ParticleSystem muzzleFlash;
 
     private void Update()
     {
@@ -20,6 +22,17 @@ public class Weapon : MonoBehaviour
     }
 
     private void Shoot()
+    {
+        PlayMuzzleFlash();
+        ProcessRaycast();
+    }
+
+    private void PlayMuzzleFlash()
+    {
+        muzzleFlash.Play();
+    }
+
+    private void ProcessRaycast()
     {
         RaycastHit hit;
 

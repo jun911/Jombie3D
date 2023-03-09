@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] int maxEnemyHealth = 100;
-    [SerializeField] int enemyHealth = 100;
+    [SerializeField] private int maxEnemyHealth = 100;
+    [SerializeField] private int enemyHealth = 100;
 
     public void TakeDamage(int dmg)
     {
@@ -16,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
         if (enemyHealth <= 0)
         {
             Destroy(gameObject);
-            
+
             Debug.Log($"Enemy dead!");
         }
     }
