@@ -63,12 +63,12 @@ public class EnemyAI : MonoBehaviour
 
     private void EngageTarget()
     {
-        if(distanceToTarget >= navMeshAgent.stoppingDistance)
+        if (distanceToTarget >= navMeshAgent.stoppingDistance)
         {
             ChaseTarget();
         }
-        
-        if(distanceToTarget <= navMeshAgent.stoppingDistance)
+
+        if (distanceToTarget <= navMeshAgent.stoppingDistance)
         {
             AttackTarget();
         }
@@ -80,7 +80,7 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent.SetDestination(target.position);
     }
 
-    void AttackTarget()
+    private void AttackTarget()
     {
         Debug.Log($"{name} has seeked and is destroying {target.name}");
     }
