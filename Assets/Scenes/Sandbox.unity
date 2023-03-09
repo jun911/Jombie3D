@@ -1186,11 +1186,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4398173262729150009, guid: 1510af05e858c3847a468964a3a1ab26, type: 3}
   m_PrefabInstance: {fileID: 4398173262442249049}
   m_PrefabAsset: {fileID: 0}
---- !u!20 &837966690 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 4398173262728650811, guid: 1510af05e858c3847a468964a3a1ab26, type: 3}
-  m_PrefabInstance: {fileID: 4398173262442249049}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1026130614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2001,7 +1996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3645329296897017966, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.34
+      value: -0.66
       objectReference: {fileID: 0}
     - target: {fileID: 3645329296897017966, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2044,29 +2039,9 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 3645329296897017969, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
-      propertyPath: speed
-      value: 3.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 3645329296897017969, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 837469536}
-    - target: {fileID: 3645329296897017969, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
-      propertyPath: chaseRange
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 3645329296897017969, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
-      propertyPath: returnSpeed
-      value: 1.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 3645329296897017970, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
-      propertyPath: m_Speed
-      value: 5.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 3645329296897017970, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
 --- !u!1001 &4398173262442249049
@@ -2125,9 +2100,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4816718348858577124, guid: 1510af05e858c3847a468964a3a1ab26, type: 3}
-      propertyPath: fpsCamera
-      value: 
-      objectReference: {fileID: 837966690}
+      propertyPath: dmg
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1510af05e858c3847a468964a3a1ab26, type: 3}
 --- !u!4 &6785187183680558806 stripped

@@ -3,7 +3,8 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private Camera fpsCamera;
-    [SerializeField][Range(0,200)] private float range = 100f;
+    [SerializeField][Range(0, 200)] private float range = 100f;
+    [SerializeField] int dmg = 10;
 
     private void Update()
     {
@@ -21,8 +22,19 @@ public class Weapon : MonoBehaviour
     private void Shoot()
     {
         RaycastHit hit;
-        Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range);
 
-        Debug.Log($"{hit.transform.name} shoot!!");
+        if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))
+        {
+            EnemyHealth enemyHealth = hit.transform.GetComponent<EnemyHealth>();
+
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(dmg);
+            }
+        }
+        else
+        {
+            return;
+        }
     }
 }
