@@ -12,13 +12,16 @@ public class EnemyAI : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
     private Vector3 startPosition;
-    private STATE_ENEMY stateEnemy;
+    [SerializeField] private STATE_ENEMY stateEnemy;
     private float distanceToTarget;
+    Animator animator;
 
     private enum STATE_ENEMY
     {
-        PEACE,
-        ENGAGE
+        IDLE,
+        MOVE,
+        ATTACK,
+        RETURN
         //PROVOKE
     }
 
@@ -26,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         startPosition = transform.position;
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -38,15 +42,48 @@ public class EnemyAI : MonoBehaviour
         distanceToTarget = Vector3.Distance(transform.position, target.position);
 
         // distance check
-        stateEnemy = (distanceToTarget <= chaseRange) ? STATE_ENEMY.ENGAGE : STATE_ENEMY.PEACE;
+        if (distanceToTarget > chaseRange)
+        {
+            //if(transform.position == startPosition)
+            //{
+                stateEnemy = STATE_ENEMY.IDLE;
+            //}
+            //else
+            //{
+            //    stateEnemy = STATE_ENEMY.RETURN;
+            //}
+        }
+        else
+        {
+            if (distanceToTarget >= navMeshAgent.stoppingDistance)
+            {
+                stateEnemy = STATE_ENEMY.MOVE;
+            }
+            else
+            {
+                stateEnemy = STATE_ENEMY.ATTACK;
+            }
+        }
+
 
         switch (stateEnemy)
         {
-            case STATE_ENEMY.PEACE:
+            case STATE_ENEMY.IDLE:
+                animator.SetInteger("State", 0);
+                break;
+
+            case STATE_ENEMY.RETURN:
+                animator.SetInteger("State", 1);
                 MoveToStart();
                 break;
 
-            case STATE_ENEMY.ENGAGE:
+            case STATE_ENEMY.MOVE:
+                animator.SetInteger("State", 1);
+                MoveToTarget();
+                break;
+
+            case STATE_ENEMY.ATTACK:
+                animator.SetInteger("State", 2);
                 EngageTarget();
                 break;
 
@@ -61,23 +98,16 @@ public class EnemyAI : MonoBehaviour
         navMeshAgent.SetDestination(startPosition);
     }
 
-    private void EngageTarget()
+    private void MoveToTarget()
     {
-        if (distanceToTarget >= navMeshAgent.stoppingDistance)
-        {
-            ChaseTarget();
-        }
-
-        if (distanceToTarget <= navMeshAgent.stoppingDistance)
-        {
-            AttackTarget();
-        }
-    }
-
-    private void ChaseTarget()
-    {
+        Debug.Log("move To Target");
         navMeshAgent.speed = speed;
         navMeshAgent.SetDestination(target.position);
+    }
+
+    private void EngageTarget()
+    {
+        AttackTarget();
     }
 
     private void AttackTarget()
@@ -93,7 +123,11 @@ public class EnemyAI : MonoBehaviour
 
             switch (stateEnemy)
             {
-                case STATE_ENEMY.ENGAGE:
+                case STATE_ENEMY.MOVE:
+                    color = Color.green;
+                    break;
+
+                case STATE_ENEMY.ATTACK:
                     color = Color.red;
                     break;
 
