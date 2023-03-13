@@ -489,6 +489,7 @@ MonoBehaviour:
   range: 100
   dmg: 30
   muzzleFlash: {fileID: 8842305200307453977}
+  hitEffect: {fileID: 6039946450183222810, guid: 6c80640123f0c154fbb62f2951f626ee, type: 3}
 --- !u!4 &5252680842495284612 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2337074158996965286, guid: ada2587319194f542957a8c2ae277cb9, type: 3}

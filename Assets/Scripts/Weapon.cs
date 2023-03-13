@@ -6,8 +6,8 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Camera fpsCamera;
     [SerializeField][Range(0, 200)] private float range = 100f;
     [SerializeField] private int dmg = 10;
-    [SerializeField] ParticleSystem muzzleFlash;
-    [SerializeField] GameObject hitEffect;
+    [SerializeField] private ParticleSystem muzzleFlash;
+    [SerializeField] private GameObject hitEffect;
 
     private void Update()
     {
