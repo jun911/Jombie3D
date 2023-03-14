@@ -69,21 +69,21 @@ public class EnemyAI : MonoBehaviour
         switch (stateEnemy)
         {
             case STATE_ENEMY.IDLE:
-                animator.SetInteger("State", 0);
+                animator.SetTrigger("Idle");
                 break;
 
             case STATE_ENEMY.RETURN:
-                animator.SetInteger("State", 1);
                 MoveToStart();
                 break;
 
             case STATE_ENEMY.MOVE:
-                animator.SetInteger("State", 1);
+                animator.SetBool("Attack", false);
+                animator.SetTrigger("Move");
                 MoveToTarget();
                 break;
 
             case STATE_ENEMY.ATTACK:
-                animator.SetInteger("State", 2);
+                animator.SetBool("Attack", true);
                 EngageTarget();
                 break;
 
