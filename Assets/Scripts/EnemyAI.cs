@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField][Range(0, 10)] private float returnSpeed = 0.5f;
     [SerializeField][Range(0, 50)] private float chaseRange = 20f;
     [SerializeField] private bool debugMode = true;
+    [SerializeField] float turnSpeed = 5f;
 
     private NavMeshAgent navMeshAgent;
     private Vector3 startPosition;
@@ -101,18 +102,27 @@ public class EnemyAI : MonoBehaviour
     private void MoveToTarget()
     {
         Debug.Log("move To Target");
+        FaceTarget();
         navMeshAgent.speed = speed;
         navMeshAgent.SetDestination(target.position);
     }
 
     private void EngageTarget()
     {
+        FaceTarget();
         AttackTarget();
     }
 
     private void AttackTarget()
     {
         Debug.Log($"{name} has seeked and is destroying {target.name}");
+    }
+
+    private void FaceTarget()
+    {
+        Vector3 direction = (target.position - transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed);
     }
 
     private void OnDrawGizmosSelected()
