@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField] Transform target;
-    [SerializeField] float damage = 40f;
+    [SerializeField] private float damage = 40f;
+
+    private PlayerHealth playerHealth;
+
+    private void Start()
+    {
+        playerHealth = FindObjectOfType<PlayerHealth>();
+    }
 
     public void AttackHitEvent()
     {
-        if(target == null) { return;  }
+        if (playerHealth == null) { return; }
 
-        target.GetComponent<PlayerHealth>().TakeDamage(damage);
-
-        Debug.Log("bang bang");
+        playerHealth.GetComponent<PlayerHealth>().TakeDamage(damage);
     }
 }

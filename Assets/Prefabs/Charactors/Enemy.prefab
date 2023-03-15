@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 3645329296897017970}
   - component: {fileID: 3645329296897017969}
   - component: {fileID: 4710971361988251229}
-  - component: {fileID: 6343036129373281356}
   - component: {fileID: 3381943893002114054}
+  - component: {fileID: 6343036129373281356}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -158,6 +158,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxEnemyHealth: 100
   enemyHealth: 100
+--- !u!114 &3381943893002114054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3645329296897017968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9035e5b5c038c2741aa489823f141d88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  damage: 20
 --- !u!95 &6343036129373281356
 Animator:
   serializedVersion: 4
@@ -178,20 +192,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3381943893002114054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3645329296897017968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9035e5b5c038c2741aa489823f141d88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  damage: 40
 --- !u!1 &7894810927352451181
 GameObject:
   m_ObjectHideFlags: 0

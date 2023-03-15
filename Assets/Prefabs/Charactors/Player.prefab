@@ -181,6 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 100
+  hitVFX: {fileID: 2205482511778205546, guid: 54b3c4f9a7e4afa4eadf1ca68e78b30c, type: 3}
 --- !u!1 &4398173262728716831
 GameObject:
   m_ObjectHideFlags: 0
