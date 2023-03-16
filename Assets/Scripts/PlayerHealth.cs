@@ -7,17 +7,18 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject hitVFX;
 
     private ScoreBoard scoreBoard;
-    private SceneLoader sceneLoader;
+    private DeathHandler deathHandler;
 
     private void Start()
     {
         scoreBoard = FindObjectOfType<ScoreBoard>();
-        sceneLoader = new SceneLoader();
+        deathHandler = gameObject.GetComponent<DeathHandler>();
     }
 
     public void TakeDamage(float dmg)
     {
-        health -= dmg;
+        health = (health - dmg) < 0 ? 0 :  health - dmg;
+        
 
         scoreBoard.UpdateScoreBoardPlayerHP(health);
         hitEffect();
@@ -25,7 +26,7 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log($"Player dead!");
-            sceneLoader.GameOver();
+            deathHandler.PlayerDead();
         }
     }
 

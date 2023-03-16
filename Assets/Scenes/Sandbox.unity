@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: ce129fa37d115cf4a8224532a62aca0c, type: 2}
---- !u!1 &27235277 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3728182787034781919, guid: 6a480279b62478a429614ef35ea918a8, type: 3}
-  m_PrefabInstance: {fileID: 6524805654782963676}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &53139551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -811,7 +806,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbae26645e7816b438de7caa2e2e2383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverCanvas: {fileID: 27235277}
 --- !u!1001 &465885545
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2192,6 +2186,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3381943893002114054, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
+      propertyPath: damage
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3381943893002114054, guid: 1e6a5f5d260f8d64096fdb95817defbe, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 837469536}
@@ -2260,6 +2258,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 565194451691508509, guid: 1510af05e858c3847a468964a3a1ab26, type: 3}
+      propertyPath: gameOverCanvas
+      value: 
+      objectReference: {fileID: 6524805654782963680}
     - target: {fileID: 4398173262728716829, guid: 1510af05e858c3847a468964a3a1ab26, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2418,6 +2420,11 @@ PrefabInstance:
 --- !u!224 &6524805654782963677 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6034284581039585836, guid: 6a480279b62478a429614ef35ea918a8, type: 3}
+  m_PrefabInstance: {fileID: 6524805654782963676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &6524805654782963680 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 2652348996997666042, guid: 6a480279b62478a429614ef35ea918a8, type: 3}
   m_PrefabInstance: {fileID: 6524805654782963676}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &6785187183680558806 stripped
