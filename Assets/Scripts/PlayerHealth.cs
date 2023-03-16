@@ -7,10 +7,12 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject hitVFX;
 
     private ScoreBoard scoreBoard;
+    private SceneLoader sceneLoader;
 
     private void Start()
     {
         scoreBoard = FindObjectOfType<ScoreBoard>();
+        sceneLoader = new SceneLoader();
     }
 
     public void TakeDamage(float dmg)
@@ -22,9 +24,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (health <= 0)
         {
-            //Destroy(gameObject);
-
             Debug.Log($"Player dead!");
+            sceneLoader.GameOver();
         }
     }
 
