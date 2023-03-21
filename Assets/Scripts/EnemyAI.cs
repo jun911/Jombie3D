@@ -16,6 +16,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private STATE_ENEMY stateEnemy;
     private float distanceToTarget;
     Animator animator;
+    private bool isProvoked = false;
 
     private enum STATE_ENEMY
     {
@@ -43,19 +44,14 @@ public class EnemyAI : MonoBehaviour
         distanceToTarget = Vector3.Distance(transform.position, target.position);
 
         // distance check
-        if (distanceToTarget > chaseRange)
+        if (distanceToTarget > chaseRange && !isProvoked)
         {
-            //if(transform.position == startPosition)
-            //{
                 stateEnemy = STATE_ENEMY.IDLE;
-            //}
-            //else
-            //{
-            //    stateEnemy = STATE_ENEMY.RETURN;
-            //}
         }
         else
         {
+            isProvoked = true;
+
             if (distanceToTarget >= navMeshAgent.stoppingDistance)
             {
                 stateEnemy = STATE_ENEMY.MOVE;
@@ -105,6 +101,11 @@ public class EnemyAI : MonoBehaviour
         FaceTarget();
         navMeshAgent.speed = speed;
         navMeshAgent.SetDestination(target.position);
+    }
+
+    private void OnDamageTaken()
+    {
+        isProvoked = true;
     }
 
     private void EngageTarget()

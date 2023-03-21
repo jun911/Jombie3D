@@ -143,6 +143,7 @@ MonoBehaviour:
   returnSpeed: 1.06
   chaseRange: 18
   debugMode: 1
+  turnSpeed: 5
   stateEnemy: 0
 --- !u!114 &4710971361988251229
 MonoBehaviour:
@@ -170,8 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9035e5b5c038c2741aa489823f141d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  damage: 20
+  damage: 40
 --- !u!95 &6343036129373281356
 Animator:
   serializedVersion: 4

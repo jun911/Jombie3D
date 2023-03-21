@@ -7,15 +7,14 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
-        enemyHealth -= dmg;
+        Debug.Log("Enemy taken damage : " + dmg);
 
-        Debug.Log($"Enemy health remain : {enemyHealth}");
+        BroadcastMessage("OnDamageTaken");
+        enemyHealth -= dmg;
 
         if (enemyHealth <= 0)
         {
             Destroy(gameObject);
-
-            Debug.Log($"Enemy dead!");
         }
     }
 }
